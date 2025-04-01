@@ -10,8 +10,10 @@ class Team:
         self.scored = 0
         self.conceded = 0
         self.difference = 0
+        self.eliminated = False
         
 ac_milan = Team("Milan", "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d0/Logo_of_AC_Milan.svg/1200px-Logo_of_AC_Milan.svg.png")
+as_monaco = Team("Monaco", "https://upload.wikimedia.org/wikipedia/en/thumb/c/cf/LogoASMonacoFC2021.svg/1200px-LogoASMonacoFC2021.svg.png")
 arsenal = Team ("Arsenal", "https://upload.wikimedia.org/wikipedia/en/thumb/5/53/Arsenal_FC.svg/1200px-Arsenal_FC.svg.png")
 aston_villa = Team ("Aston Villa", "https://upload.wikimedia.org/wikipedia/en/thumb/9/9a/Aston_Villa_FC_new_crest.svg/250px-Aston_Villa_FC_new_crest.svg.png")
 atalanta = Team("Atalanta", "https://upload.wikimedia.org/wikipedia/en/thumb/6/66/AtalantaBC.svg/250px-AtalantaBC.svg.png")
@@ -24,6 +26,7 @@ bologna = Team("Bologna", "https://upload.wikimedia.org/wikipedia/commons/thumb/
 b_dortmund = Team("Borussia Dortmund", "https://upload.wikimedia.org/wikipedia/commons/thumb/6/67/Borussia_Dortmund_logo.svg/1200px-Borussia_Dortmund_logo.svg.png")
 brest = Team ("Brest", "https://upload.wikimedia.org/wikipedia/en/thumb/0/05/Stade_Brestois_29_logo.svg/1200px-Stade_Brestois_29_logo.svg.png")
 c_brugge = Team ("Club Brugge", "https://upload.wikimedia.org/wikipedia/en/thumb/d/d0/Club_Brugge_KV_logo.svg/1200px-Club_Brugge_KV_logo.svg.png")
+celtic = Team ("Celtic", "https://upload.wikimedia.org/wikipedia/en/thumb/7/71/Celtic_FC_crest.svg/1200px-Celtic_FC_crest.svg.png")
 d_zagreb = Team ("Dinamo Zagreb", "https://upload.wikimedia.org/wikipedia/en/thumb/d/d0/Club_Brugge_KV_logo.svg/1200px-Club_Brugge_KV_logo.svg.png")
 feyenoord = Team ("Feyenoord", "https://upload.wikimedia.org/wikipedia/en/thumb/d/d0/Club_Brugge_KV_logo.svg/1200px-Club_Brugge_KV_logo.svg.png")
 girona = Team ("Girona", "https://upload.wikimedia.org/wikipedia/en/thumb/f/f7/Girona_FC_Logo.svg/1200px-Girona_FC_Logo.svg.png")
@@ -45,3 +48,8 @@ sparta_praga = Team ("Sparta Prague", "https://upload.wikimedia.org/wikipedia/co
 sporting = Team  ("Sporting Lisbon", "https://upload.wikimedia.org/wikipedia/en/thumb/e/e1/Sporting_Clube_de_Portugal_%28Logo%29.svg/1200px-Sporting_Clube_de_Portugal_%28Logo%29.svg.png")
 stuttgart = Team ("Stuttgart", "https://upload.wikimedia.org/wikipedia/en/thumb/e/e1/Sporting_Clube_de_Portugal_%28Logo%29.svg/1200px-Sporting_Clube_de_Portugal_%28Logo%29.svg.png") 
 young_boys = Team ("Young Boys", "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c2/BSC_Young_Boys.svg/800px-BSC_Young_Boys.svg.png")
+
+teams = {1: ac_milan, 2: as_monaco, 3: arsenal, 4: aston_villa, 5: atalanta, 6: atl_matrid, 7: barcelona, 8: b_leverkusen, 9: b_munich,
+         10: benfica, 11: bologna, 12: b_dortmund, 13: brest, 14: celtic, 15: c_brugge, 16: d_zagreb, 17: feyenoord, 18: girona, 19: inter,
+         20: juventus, 21: lille, 22: liverpool, 23: man_city, 24: psv, 25: paris, 26: rb_leipzig, 27: rb_salzburg, 28:real_madrid,
+         29: red_star, 30: sk_sturm, 31: shaktar, 32: slovan, 33: sparta_praga, 34: sporting, 35: stuttgart, 36: young_boys}
