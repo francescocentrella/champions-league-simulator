@@ -14,9 +14,3 @@ class Team:
         self.opponents = []
         self.eliminated = False
 
-    def add_opponent(self, temp):
-        self.opponents.append(temp)
-
-    def get_opponent(self):
-        return self.opponents
-

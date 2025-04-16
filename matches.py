@@ -43,38 +43,47 @@ teams = {1: ac_milan, 2: as_monaco, 3: arsenal, 4: aston_villa, 5: atalanta, 6: 
         20: juventus, 21: lille, 22: liverpool, 23: man_city, 24: psv, 25: paris, 26: rb_leipzig, 27: rb_salzburg, 28:real_madrid,
         29: red_star, 30: sk_sturm, 31: shaktar, 32: slovan, 33: sparta_praga, 34: sporting, 35: stuttgart, 36: young_boys}
 
+
 def main():
     clubs = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36]
-    draw(clubs)
+    draw(18)
     for i in clubs:
         print(teams[i].opponents)
+    
+
+
 
     
 
-def draw (clubs_list):
-    for _ in clubs_list:
+def draw (n_draws):
+    clubs_list = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36]
+    for _ in range (n_draws):
         team1 = random.choice(clubs_list)
         team2 = random.choice(clubs_list)
+        while (team1 == team2):
+            team1 = random.choice(clubs_list)
+            team2 = random.choice(clubs_list)
         teams[team1].opponents.append(team2)
         teams[team2].opponents.append(team1)
-        clubs_list.pop(position_team(clubs_list, team1))
-        clubs_list.pop(position_team(clubs_list, team2))
+        clubs_list = position_team(clubs_list, team1, team2)
 
 
-def position_team(temp, team):
+def position_team(temp, team1, team2):
     position = 0
     for i in temp:
-        position += 1
-        if i == team:
-            return 
-
-
-
-def form_clubs():
-    clubs = []
-    for i in range (36):
-        clubs.append(i + 1)
-    return clubs
+        if i == team1:
+            temp.pop(position)
+            break
+        else:
+            position += 1
+    position = 0
+    for i in temp:
+        if i == team2:
+            temp.pop(position)
+            break
+        else:
+            position += 1
+    return temp
 
 
 main()
