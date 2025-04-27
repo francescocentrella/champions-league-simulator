@@ -1,6 +1,6 @@
 
 class Team:
-    def __init__(self, name, logo):
+    def __init__(self, name, logo, country):
         self.name = name
         self.logo = logo
         self.game_played = 0
@@ -13,4 +13,5 @@ class Team:
         self.difference = 0
         self.opponents = []
         self.eliminated = False
+        self.country = country
 

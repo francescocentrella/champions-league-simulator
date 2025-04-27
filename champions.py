@@ -56,19 +56,20 @@ def main():
     
 
 def draw (n_draws):
-    clubs_list = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36]
-    for _ in range (n_draws):
-        team1 = random.choice(clubs_list)
-        team2 = random.choice(clubs_list)
-        while (team1 == team2):
+    for i in range (8):
+        clubs_list = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36]
+        for _ in range (n_draws):
             team1 = random.choice(clubs_list)
             team2 = random.choice(clubs_list)
-        teams[team1].opponents.append(team2)
-        teams[team2].opponents.append(team1)
-        clubs_list = position_team(clubs_list, team1, team2)
+            while (team1 == team2) or (already_played(team1, team2)):
+                team1 = random.choice(clubs_list)
+                team2 = random.choice(clubs_list)
+            teams[team1].opponents.append(team2)
+            teams[team2].opponents.append(team1)
+            clubs_list = remove_team(clubs_list, team1, team2)
 
 
-def position_team(temp, team1, team2):
+def remove_team(temp, team1, team2):
     position = 0
     for i in temp:
         if i == team1:
@@ -84,6 +85,13 @@ def position_team(temp, team1, team2):
         else:
             position += 1
     return temp
+
+def already_played (team1, team2):
+    for i in teams[team1].opponents:
+        if team2 == i:
+            return True
+    return False
+
 
 
 main()
