@@ -40,3 +40,88 @@ teams = {1:al_ahly, 2:wydad, 3:esperance, 4:mamelodi, 5:al_hilal, 6:urawa, 7:al_
 
 groups = { 'A':[26, 15, 1, 32], 'B':[13, 19, 29, 22], 'C':[12, 25, 16, 31], 'D':[27, 3, 9, 23], 'E':[30, 6, 21, 14], 'F':[28, 17, 8, 4],
           'G':[11, 2, 7, 18], 'H':[10, 5, 24, 20]}
+
+quarter_finals = {1:'x', 2:'x', 3:'x', 4:'x', 5:'x', 6:'x', 7:'x', 8:'x'}
+
+semi_finals = {1:'x', 2:'x', 3:'x', 4:'x'}
+
+final = {1:'x', 2:'x'}
+
+winner = {1:'x'}
+
+
+def simulation_world_cup():
+    for l in ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H']:
+        new_group = [0,0,0,0]
+        for t in [0, 1, 2, 3]:
+            print(f"{teams[groups[l][t]].name}")
+        for p in [0, 1, 2, 3]:
+            choice = int(input(f"What will be the position of {teams[groups[l][p]].name}: "))
+            new_group[(choice - 1)] = groups[l][p]
+        groups[l] = new_group
+
+    round_of_sixteen = {1:groups["A"][0], 2:groups["B"][1], 3:groups["C"][0], 4:groups["D"][1], 5:groups["E"][0], 6:groups["F"][2], 7:groups["G"][0], 8:groups["H"][1],
+                    9:groups["B"][0], 10:groups["A"][1], 11:groups["D"][0], 12:groups["C"][1], 13:groups["F"][0], 14:groups["E"][1], 15:groups["H"][0], 16:groups["G"][1]}
+
+    cursor = 1
+    next_to_qualify = 1
+    while cursor != 17:
+        print(f"{teams[round_of_sixteen[cursor]].name} - {teams[round_of_sixteen[(cursor + 1)]].name}")
+        team1_goals = int(input(f"How many goals did {teams[round_of_sixteen[cursor]].name} score? "))
+        team2_goals = int(input(f"How many goals did {teams[round_of_sixteen[((cursor + 1))]].name} score? "))
+        aggregate1 = team1_goals
+        aggregate2 = team2_goals
+        if team1_goals == team2_goals:
+            team1_overtime = int(input(f"How many goals did {teams[round_of_sixteen[cursor]].name} score during overtime? "))
+            team2_overtime = int(input(f"How many goals did {teams[round_of_sixteen[(cursor + 1)]].name} score during overtime? "))
+            aggregate1 += team1_overtime
+            aggregate2 += team2_overtime
+            if team1_overtime == team2_overtime:
+                team1_penalties = int(input(f"How many penalties did {teams[round_of_sixteen[cursor]].name} score? "))
+                team2_penalties = int(input(f"How many penalties did {teams[round_of_sixteen[(cursor + 1)]].name} score? "))
+                aggregate1 += team1_penalties
+                aggregate2 += team2_penalties
+        if aggregate1 > aggregate2:
+            print(f"{teams[round_of_sixteen[cursor]].name} qualifies for winning {aggregate1} - {aggregate2} against {teams[round_of_sixteen[(cursor + 1)]].name}")
+            quarter_finals[next_to_qualify] = round_of_sixteen[cursor]
+        else:
+            print(f"{teams[round_of_sixteen[(cursor + 1)]].name} qualifies for winning {aggregate2} - {aggregate1} against {teams[round_of_sixteen[cursor]].name}")
+            quarter_finals[next_to_qualify] = round_of_sixteen[(cursor + 1)]
+        cursor += 2
+        next_to_qualify += 1
+    
+
+def knockout(num, round):
+    cursor = 1
+    next_to_qualify = 1
+    while cursor != num:
+        print(f"{teams[round[cursor]].name} - {teams[round[(cursor + 1)]].name}")
+        team1_goals = int(input(f"How many goals did {teams[round[cursor]].name} score? "))
+        team2_goals = int(input(f"How many goals did {teams[round[((cursor + 1))]].name} score? "))
+        aggregate1 = team1_goals
+        aggregate2 = team2_goals
+        if team1_goals == team2_goals:
+            team1_overtime = int(input(f"How many goals did {teams[round[cursor]].name} score during overtime? "))
+            team2_overtime = int(input(f"How many goals did {teams[round[(cursor + 1)]].name} score during overtime? "))
+            aggregate1 += team1_overtime
+            aggregate2 += team2_overtime
+            if team1_overtime == team2_overtime:
+                team1_penalties = int(input(f"How many penalties did {teams[round[cursor]].name} score? "))
+                team2_penalties = int(input(f"How many penalties did {teams[round[(cursor + 1)]].name} score? "))
+                aggregate1 += team1_penalties
+                aggregate2 += team2_penalties
+        if aggregate1 > aggregate2:
+            print(f"{teams[round[cursor]].name} qualifies for winning {aggregate1} - {aggregate2} against {teams[round[(cursor + 1)]].name}")
+            quarter_finals[next_to_qualify] = round[cursor]
+        else:
+            print(f"{teams[round[(cursor + 1)]].name} qualifies for winning {aggregate2} - {aggregate1} against {teams[round[cursor]].name}")
+            quarter_finals[next_to_qualify] = round[(cursor + 1)]
+        cursor += 2
+        next_to_qualify += 1
+
+
+
+    
+    
+
+simulation_world_cup()
